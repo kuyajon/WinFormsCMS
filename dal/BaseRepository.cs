@@ -3,6 +3,7 @@ using Dapper.Contrib.Extensions;
 using System.Data;
 using MySql.Data.MySqlClient; // Assuming you're using MySQL
 using System.Configuration;
+using System.Reflection;
 
 namespace WinFormsCMS
 {
@@ -16,7 +17,7 @@ namespace WinFormsCMS
             }
         }
 
-        public T GetById(int id)
+        public T GetById(long id)
         {
             using (IDbConnection connection = DbUtils.getConnection())
             {
@@ -24,11 +25,12 @@ namespace WinFormsCMS
             }
         }
 
-        public void Insert(T entity)
+        public T Insert(T entity)
         {
             using (IDbConnection connection = DbUtils.getConnection())
             {
-                connection.Insert(entity);
+                long id = connection.Insert(entity);
+                return connection.Get<T>(id);
             }
         }
 
@@ -36,6 +38,11 @@ namespace WinFormsCMS
         {
             using (IDbConnection connection = DbUtils.getConnection())
             {
+                PropertyInfo updateDateProperty = entity.GetType().GetProperty("UpdatedDate");
+                if (updateDateProperty != null && updateDateProperty.CanWrite)
+                {
+                    updateDateProperty.SetValue(entity, DateTime.Now, null);
+                }
                 connection.Update(entity);
             }
         }
