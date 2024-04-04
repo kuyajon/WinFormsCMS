@@ -54,5 +54,16 @@ namespace WinFormsCMS
                 connection.Delete(entity);
             }
         }
+        public void DeleteById(long id)
+        {
+            using (IDbConnection connection = DbUtils.getConnection())
+            {
+                T entityToDelete = connection.Get<T>(id);
+                if (entityToDelete != null)
+                {
+                    connection.Delete(entityToDelete);
+                }
+            }
+        }
     }
 }

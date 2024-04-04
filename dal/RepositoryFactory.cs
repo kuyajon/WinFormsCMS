@@ -12,5 +12,13 @@ namespace WinFormsCMS
         {
             return new ContentRepository();
         }
+        public static CategoryRepository getCategoryRepository()
+        {
+            return new CategoryRepository();
+        }
+        public static ContentCategoryRepository getContentCategoryRepository()
+        {
+            return new ContentCategoryRepository();
+        }
     }
 }

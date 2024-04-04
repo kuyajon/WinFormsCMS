@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WinFormsCMS
 {
+    [Dapper.Contrib.Extensions.Table("Content")]
     public class Content
     {
         [Key]

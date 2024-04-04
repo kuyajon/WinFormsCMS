@@ -81,16 +81,8 @@ namespace WinFormsCMS.forms
         {
             if (tbTitle.Text.Length > 0 && tbPermalink.Text.Length == 0)
             {
-                tbPermalink.Text = ConvertToPermalink(tbTitle.Text);
+                tbPermalink.Text = StringUtil.ConvertToPermalink(tbTitle.Text);
             }
-        }
-
-        static string ConvertToPermalink(string title)
-        {
-            string permalink = title.ToLower();
-            permalink = Regex.Replace(permalink, @"\s+", "-");
-            permalink = Regex.Replace(permalink, @"[^a-z0-9\-]", "");
-            return permalink;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -1,12 +1,27 @@
-CREATE TABLE contents (
+CREATE TABLE Content (
     Id BIGINT AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(255) DEFAULT '',
-    ContentType VARCHAR(20),
+    ContentType int,
     Permalink VARCHAR(255) UNIQUE,
     Body MEDIUMTEXT,
     Rendered MEDIUMTEXT,
     Template VARCHAR(255),
-    Status VARCHAR(20),
+    Status int,
     CreatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UpdatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Category (
+    Id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Slug VARCHAR(255) NOT NULL,
+    ContentType INT NOT NULL
+);
+
+CREATE TABLE ContentCategory (
+    Id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    ContentId BIGINT NOT NULL,
+    CategoryId BIGINT NOT NULL,
+    FOREIGN KEY (ContentId) REFERENCES Content(Id),
+    FOREIGN KEY (CategoryId) REFERENCES Category(Id)
 );
