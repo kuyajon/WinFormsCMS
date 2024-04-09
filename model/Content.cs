@@ -1,6 +1,5 @@
 ﻿
 using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WinFormsCMS
 {
@@ -19,5 +18,19 @@ namespace WinFormsCMS
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
+
+        [Write(false)]
+        public string LocalParentPath => GetParentPath();
+        [Write(false)]
+        public string LocalFullPath => GetFullPath();
+
+        private string GetParentPath()
+        {
+            return $"{Config.LocalFolder}/{Config.RootContentPath}/{CreatedDate.Year}/{CreatedDate.Month}/{Permalink}";
+        }
+        private string GetFullPath()
+        {
+            return $"{LocalParentPath}/index.html";
+        }
     }
 }

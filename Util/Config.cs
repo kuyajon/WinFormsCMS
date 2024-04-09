@@ -12,5 +12,6 @@ namespace WinFormsCMS
         public static String LocalDomainName = ConfigurationManager.AppSettings["LocalDomainName"];
         public static String LocalFolder = ConfigurationManager.AppSettings["LocalFolder"];
         public static String ThemeFile = ConfigurationManager.AppSettings["ThemeFile"];
+        public static String RootContentPath = ConfigurationManager.AppSettings["RootContentPath"];
     }
 }

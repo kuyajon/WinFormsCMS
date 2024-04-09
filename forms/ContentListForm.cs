@@ -35,7 +35,7 @@ namespace WinFormsCMS
             dgPages.Columns["Title"].Width = 800;
         }
 
-        private void Refresh()
+        public void RefreshGrid()
         {
             dgPages.DataSource = contentRepository.Search(contentType, getSelectedStatus());
         }
@@ -72,7 +72,7 @@ namespace WinFormsCMS
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            new AddEditContentForm(contentType).Show();
+            new AddEditContentForm(this, contentType).Show();
         }
 
         private void ContentListForm_Resize(object sender, EventArgs e)
@@ -86,13 +86,22 @@ namespace WinFormsCMS
 
         private void rbDraft_CheckedChanged(object sender, EventArgs e)
         {
-            Refresh();
+            RefreshGrid();
         }
 
         private void ContentListForm_Load(object sender, EventArgs e)
         {
             rbDraft.Checked = true;
-            Refresh();
+            RefreshGrid();
+        }
+
+        private void dgPages_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgPages.SelectedRows.Count > 0)
+            {
+                Content content = dgPages.SelectedRows[0].DataBoundItem as Content;
+                new AddEditContentForm(this, contentType, content).Show();
+            }
         }
     }
 }

@@ -40,6 +40,7 @@
             btnSave = new Button();
             label5 = new Label();
             cbStatus = new ComboBox();
+            lbCategories = new ListBox();
             SuspendLayout();
             // 
             // label1
@@ -102,7 +103,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(28, 186);
+            label4.Location = new Point(28, 194);
             label4.Name = "label4";
             label4.Size = new Size(79, 38);
             label4.TabIndex = 6;
@@ -110,9 +111,9 @@
             // 
             // rtbBody
             // 
-            rtbBody.Location = new Point(206, 194);
+            rtbBody.Location = new Point(495, 194);
             rtbBody.Name = "rtbBody";
-            rtbBody.Size = new Size(1245, 958);
+            rtbBody.Size = new Size(956, 958);
             rtbBody.TabIndex = 7;
             rtbBody.Text = "";
             rtbBody.TextChanged += rtbBody_TextChanged;
@@ -164,11 +165,22 @@
             cbStatus.Size = new Size(428, 46);
             cbStatus.TabIndex = 11;
             // 
+            // lbCategories
+            // 
+            lbCategories.FormattingEnabled = true;
+            lbCategories.ItemHeight = 25;
+            lbCategories.Location = new Point(28, 258);
+            lbCategories.Name = "lbCategories";
+            lbCategories.SelectionMode = SelectionMode.MultiSimple;
+            lbCategories.Size = new Size(440, 1004);
+            lbCategories.TabIndex = 12;
+            // 
             // AddEditContentForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2839, 1164);
+            ClientSize = new Size(2839, 1303);
+            Controls.Add(lbCategories);
             Controls.Add(cbStatus);
             Controls.Add(label5);
             Controls.Add(btnSave);
@@ -183,6 +195,7 @@
             Controls.Add(label1);
             Name = "AddEditContentForm";
             Text = "AddEditContentForm";
+            FormClosing += AddEditContentForm_FormClosing;
             Load += AddEditContentForm_Load;
             Resize += AddEditContentForm_Resize;
             ResumeLayout(false);
@@ -203,5 +216,6 @@
         private Button btnSave;
         private Label label5;
         private ComboBox cbStatus;
+        private ListBox lbCategories;
     }
 }

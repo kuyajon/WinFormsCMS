@@ -41,10 +41,13 @@
             // 
             dgPages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgPages.Location = new Point(12, 89);
+            dgPages.MultiSelect = false;
             dgPages.Name = "dgPages";
             dgPages.RowHeadersWidth = 62;
+            dgPages.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgPages.Size = new Size(1585, 670);
             dgPages.TabIndex = 0;
+            dgPages.DoubleClick += dgPages_DoubleClick;
             // 
             // labelTitle
             // 
