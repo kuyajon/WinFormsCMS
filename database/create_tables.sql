@@ -25,3 +25,9 @@ CREATE TABLE ContentCategory (
     FOREIGN KEY (ContentId) REFERENCES Content(Id),
     FOREIGN KEY (CategoryId) REFERENCES Category(Id)
 );
+
+CREATE TABLE Section (
+    Id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    ContentKey VARCHAR(255) UNIQUE,
+    ContentBody MEDIUMTEXT,
+);

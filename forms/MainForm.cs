@@ -20,6 +20,9 @@ namespace WinFormsCMS
             ToolStripMenuItem catMenu = new ToolStripMenuItem($"Categories");
             menuStrip1.Items.Add(catMenu);
             catMenu.Click += CategoryItem_Click;
+            ToolStripMenuItem sectionMenu = new ToolStripMenuItem($"Sections");
+            menuStrip1.Items.Add(sectionMenu);
+            sectionMenu.Click += SectionItem_Click;
         }
 
         private void ContentListItem_Click(object sender, EventArgs e)
@@ -33,7 +36,13 @@ namespace WinFormsCMS
 
         private void CategoryItem_Click(object sender, EventArgs e)
         {
-            CategoryForm childForm = new CategoryForm();
+            CategoryForm childForm = CategoryForm.getInstance();
+            childForm.Show();
+            childForm.BringToFront();
+        }
+        private void SectionItem_Click(object sender, EventArgs e)
+        {
+            SectionForm childForm = SectionForm.getInstance();
             childForm.Show();
             childForm.BringToFront();
         }

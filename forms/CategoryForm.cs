@@ -14,9 +14,10 @@ namespace WinFormsCMS.forms
 {
     public partial class CategoryForm : Form
     {
+        private static CategoryForm INSTANCE = null;
         private CategoryRepository categoryRepository = RepositoryFactory.getCategoryRepository();
         private ContentType selectedContentType;
-        public CategoryForm()
+        private CategoryForm()
         {
             InitializeComponent();
             MdiParent = Mainform.INSTANCE;
@@ -30,6 +31,14 @@ namespace WinFormsCMS.forms
             cbContentType.SelectedIndex = 0;
         }
 
+        public static CategoryForm getInstance()
+        {
+            if (INSTANCE == null)
+            {
+                INSTANCE = new CategoryForm();
+            }
+            return INSTANCE;
+        }
         private void RefreshGrid()
         {
             if (selectedContentType != null)

@@ -24,14 +24,33 @@ namespace WinFormsCMS
         {
             InitializeComponent();
             dgPages.AutoGenerateColumns = false;
-            dgPages.Columns.Add("Title", "The Title");
+            dgPages.Columns.Add("ContentType", "ContentType");
+            dgPages.Columns.Add("Title", "Title");
+            dgPages.Columns.Add("Permalink", "Permalink");
+            dgPages.Columns.Add("CreatedDate", "Created Date");
+            dgPages.Columns["ContentType"].DataPropertyName = "ContentType";
             dgPages.Columns["Title"].DataPropertyName = "Title";
-            Refresh();
+            dgPages.Columns["Permalink"].DataPropertyName = "Permalink";
+            dgPages.Columns["CreatedDate"].DataPropertyName = "CreatedDate";
+            dgPages.Columns["Title"].Width = 800;
         }
 
         private void Refresh()
         {
-            dgPages.DataSource = contentRepository.GetAll();
+            dgPages.DataSource = contentRepository.Search(contentType, getSelectedStatus());
+        }
+
+        private ContentStatus getSelectedStatus()
+        {
+            if (rbDraft.Checked)
+            {
+                return ContentStatus.Draft;
+            }
+            if (rbPublished.Checked)
+            {
+                return ContentStatus.Published;
+            }
+            return ContentStatus.Trash;
         }
 
         public static ContentListForm getInstance(ContentType contentType)
@@ -63,6 +82,17 @@ namespace WinFormsCMS
 
             // Set the new size for the DataGridView
             dgPages.Size = new System.Drawing.Size(newWidth, newHeight);
+        }
+
+        private void rbDraft_CheckedChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void ContentListForm_Load(object sender, EventArgs e)
+        {
+            rbDraft.Checked = true;
+            Refresh();
         }
     }
 }

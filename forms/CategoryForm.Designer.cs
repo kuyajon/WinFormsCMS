@@ -69,23 +69,23 @@
             dgCategories.Location = new Point(16, 90);
             dgCategories.Name = "dgCategories";
             dgCategories.RowHeadersWidth = 62;
-            dgCategories.Size = new Size(972, 1134);
+            dgCategories.Size = new Size(1528, 1134);
             dgCategories.TabIndex = 14;
             dgCategories.Click += dgCategories_Click;
             // 
             // tbSlug
             // 
             tbSlug.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbSlug.Location = new Point(1197, 182);
+            tbSlug.Location = new Point(1758, 188);
             tbSlug.Name = "tbSlug";
-            tbSlug.Size = new Size(814, 45);
+            tbSlug.Size = new Size(837, 45);
             tbSlug.TabIndex = 20;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(1019, 189);
+            label3.Location = new Point(1580, 195);
             label3.Name = "label3";
             label3.Size = new Size(71, 38);
             label3.TabIndex = 19;
@@ -94,9 +94,9 @@
             // tbName
             // 
             tbName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbName.Location = new Point(1197, 131);
+            tbName.Location = new Point(1758, 137);
             tbName.Name = "tbName";
-            tbName.Size = new Size(814, 45);
+            tbName.Size = new Size(837, 45);
             tbName.TabIndex = 18;
             tbName.Leave += tbName_Leave;
             // 
@@ -104,7 +104,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(1019, 138);
+            label2.Location = new Point(1580, 144);
             label2.Name = "label2";
             label2.Size = new Size(91, 38);
             label2.TabIndex = 17;
@@ -113,17 +113,17 @@
             // tbID
             // 
             tbID.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbID.Location = new Point(1197, 80);
+            tbID.Location = new Point(1758, 86);
             tbID.Name = "tbID";
             tbID.ReadOnly = true;
-            tbID.Size = new Size(814, 45);
+            tbID.Size = new Size(837, 45);
             tbID.TabIndex = 16;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(1019, 87);
+            label1.Location = new Point(1580, 93);
             label1.Name = "label1";
             label1.Size = new Size(44, 38);
             label1.TabIndex = 15;
@@ -132,7 +132,7 @@
             // btnSave
             // 
             btnSave.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(1899, 242);
+            btnSave.Location = new Point(2483, 248);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(112, 45);
             btnSave.TabIndex = 21;
@@ -143,7 +143,7 @@
             // btnClear
             // 
             btnClear.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnClear.Location = new Point(1019, 242);
+            btnClear.Location = new Point(1580, 248);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(112, 45);
             btnClear.TabIndex = 22;
@@ -154,7 +154,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(1197, 242);
+            btnDelete.Location = new Point(1758, 248);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(112, 45);
             btnDelete.TabIndex = 23;
@@ -166,7 +166,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2071, 1257);
+            ClientSize = new Size(2630, 1257);
             Controls.Add(btnDelete);
             Controls.Add(btnClear);
             Controls.Add(btnSave);

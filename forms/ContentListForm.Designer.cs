@@ -68,6 +68,7 @@
             rbDraft.TabStop = true;
             rbDraft.Text = "Draft";
             rbDraft.UseVisualStyleBackColor = true;
+            rbDraft.CheckedChanged += rbDraft_CheckedChanged;
             // 
             // rbPublished
             // 
@@ -79,6 +80,7 @@
             rbPublished.TabIndex = 3;
             rbPublished.Text = "Published";
             rbPublished.UseVisualStyleBackColor = true;
+            rbPublished.CheckedChanged += rbDraft_CheckedChanged;
             // 
             // rbTrash
             // 
@@ -90,6 +92,7 @@
             rbTrash.TabIndex = 4;
             rbTrash.Text = "Trash";
             rbTrash.UseVisualStyleBackColor = true;
+            rbTrash.CheckedChanged += rbDraft_CheckedChanged;
             // 
             // btnNew
             // 
@@ -115,6 +118,7 @@
             Controls.Add(dgPages);
             Name = "ContentListForm";
             Text = "FrmPageList";
+            Load += ContentListForm_Load;
             Resize += ContentListForm_Resize;
             ((System.ComponentModel.ISupportInitialize)dgPages).EndInit();
             ResumeLayout(false);
