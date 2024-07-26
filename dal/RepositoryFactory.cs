@@ -25,5 +25,10 @@ namespace WinFormsCMS
         {
             return new SectionRepository();
         }
+
+        public static ComponentRepository getComponentRepository()
+        {
+            return new ComponentRepository();
+        }
     }
 }

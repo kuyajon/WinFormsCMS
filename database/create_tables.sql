@@ -29,5 +29,11 @@ CREATE TABLE ContentCategory (
 CREATE TABLE Section (
     Id BIGINT PRIMARY KEY AUTO_INCREMENT,
     ContentKey VARCHAR(255) UNIQUE,
-    ContentBody MEDIUMTEXT,
+    ContentBody MEDIUMTEXT
+);
+
+CREATE TABLE Component (
+    Id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    ComponentKey VARCHAR(255) UNIQUE,
+    ComponentBody MEDIUMTEXT
 );
