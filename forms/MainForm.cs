@@ -23,6 +23,11 @@ namespace WinFormsCMS
             ToolStripMenuItem sectionMenu = new ToolStripMenuItem($"Sections");
             menuStrip1.Items.Add(sectionMenu);
             sectionMenu.Click += SectionItem_Click;
+
+            ToolStripMenuItem componentMenu = new ToolStripMenuItem($"Components");
+            menuStrip1.Items.Add(componentMenu);
+            componentMenu.Click += ComponentItem_Click;
+
         }
 
         private void ContentListItem_Click(object sender, EventArgs e)
@@ -46,7 +51,13 @@ namespace WinFormsCMS
             childForm.Show();
             childForm.BringToFront();
         }
-
+        private void ComponentItem_Click(object sender, EventArgs e)
+        {
+            ComponentForm childForm = ComponentForm.getInstance();
+            childForm.Show();
+            childForm.BringToFront();
+        }
+        
         private void Mainform_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
