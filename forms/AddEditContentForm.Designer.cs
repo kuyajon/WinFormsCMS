@@ -36,7 +36,6 @@
             label3 = new Label();
             label4 = new Label();
             rtbBody = new RichTextBox();
-            rtbPreview = new DG.MiniHTMLTextBox.MiniHTMLTextBox();
             btnSave = new Button();
             label5 = new Label();
             cbStatus = new ComboBox();
@@ -47,6 +46,9 @@
             label7 = new Label();
             tbPublishDate = new TextBox();
             label8 = new Label();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            wvPreview = new Microsoft.Web.WebView2.WinForms.WebView2();
+            ((System.ComponentModel.ISupportInitialize)wvPreview).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -123,23 +125,6 @@
             rtbBody.TabIndex = 7;
             rtbBody.Text = "";
             rtbBody.TextChanged += rtbBody_TextChanged;
-            // 
-            // rtbPreview
-            // 
-            rtbPreview.IllegalPatterns = new string[]
-    {
-    "<script.*?>",
-    "<\\w+\\s+.*?(j|java|vb|ecma)script:.*?>",
-    "<\\w+(\\s+|\\s+.*?\\s+)on\\w+\\s*=.+?>",
-    "</?input.*?>"
-    };
-            rtbPreview.Location = new Point(1499, 194);
-            rtbPreview.Margin = new Padding(5, 6, 5, 6);
-            rtbPreview.Name = "rtbPreview";
-            rtbPreview.Padding = new Padding(2, 2, 2, 2);
-            rtbPreview.Size = new Size(1300, 939);
-            rtbPreview.TabIndex = 8;
-            rtbPreview.Text = null;
             // 
             // btnSave
             // 
@@ -238,11 +223,23 @@
             label8.TabIndex = 17;
             label8.Text = "PublishDate";
             // 
+            // wvPreview
+            // 
+            wvPreview.AllowExternalDrop = true;
+            wvPreview.CreationProperties = null;
+            wvPreview.DefaultBackgroundColor = Color.White;
+            wvPreview.Location = new Point(1500, 194);
+            wvPreview.Name = "wvPreview";
+            wvPreview.Size = new Size(1285, 373);
+            wvPreview.TabIndex = 19;
+            wvPreview.ZoomFactor = 1D;
+            // 
             // AddEditContentForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2839, 1303);
+            Controls.Add(wvPreview);
             Controls.Add(tbPublishDate);
             Controls.Add(label8);
             Controls.Add(tbUpdateDate);
@@ -253,7 +250,6 @@
             Controls.Add(cbStatus);
             Controls.Add(label5);
             Controls.Add(btnSave);
-            Controls.Add(rtbPreview);
             Controls.Add(rtbBody);
             Controls.Add(label4);
             Controls.Add(tbPermalink);
@@ -267,6 +263,7 @@
             FormClosing += AddEditContentForm_FormClosing;
             Load += AddEditContentForm_Load;
             Resize += AddEditContentForm_Resize;
+            ((System.ComponentModel.ISupportInitialize)wvPreview).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -281,7 +278,6 @@
         private Label label3;
         private Label label4;
         private RichTextBox rtbBody;
-        private DG.MiniHTMLTextBox.MiniHTMLTextBox rtbPreview;
         private Button btnSave;
         private Label label5;
         private ComboBox cbStatus;
@@ -292,5 +288,7 @@
         private Label label7;
         private TextBox tbPublishDate;
         private Label label8;
+        private FolderBrowserDialog folderBrowserDialog1;
+        private Microsoft.Web.WebView2.WinForms.WebView2 wvPreview;
     }
 }

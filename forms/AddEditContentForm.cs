@@ -5,11 +5,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -25,6 +27,8 @@ namespace WinFormsCMS.forms
         public AddEditContentForm(ContentListForm parent, ContentType contentType, Content content)
         {
             InitializeComponent();
+            wvPreview.EnsureCoreWebView2Async(null);
+
             cbStatus.DataSource = Enum.GetValues(typeof(ContentStatus));
             this.contentType = contentType;
             this.parent = parent;
@@ -50,6 +54,8 @@ namespace WinFormsCMS.forms
                     tbPublishDate.Text = content.PublishDate.ToString();
                 }
             }
+
+            
         }
         public AddEditContentForm(ContentListForm parent, ContentType contentType) : this(parent, contentType, null)
         {
@@ -69,6 +75,9 @@ namespace WinFormsCMS.forms
                 tbTitle.Text = content.Title;
                 tbPermalink.Text = content.Permalink;
                 rtbBody.Text = content.Body;
+
+                Thread thread = new Thread(new ThreadStart(CallRefreshPreviewAfterDelay));
+                thread.Start();
             }
             else
             {
@@ -76,6 +85,11 @@ namespace WinFormsCMS.forms
             }
         }
 
+        private void CallRefreshPreviewAfterDelay()
+        {
+            Thread.Sleep(2000); // Wait for 2 seconds
+            this.Invoke(new Action(RefreshPreview)); // Ensure it runs on the UI thread
+        }
 
         private void AddEditContentForm_Resize(object sender, EventArgs e)
         {
@@ -83,10 +97,10 @@ namespace WinFormsCMS.forms
             int newHeight1 = this.ClientSize.Height - 220;
             rtbBody.Size = new System.Drawing.Size(newWidth1, newHeight1);
 
-            rtbPreview.Location = new System.Drawing.Point(this.ClientSize.Width / 2 + 20 + 100, rtbPreview.Location.Y);
+            wvPreview.Location = new System.Drawing.Point(this.ClientSize.Width / 2 + 20 + 100, wvPreview.Location.Y);
             int newWidth2 = (this.ClientSize.Width / 2) - 40 - 100;
             int newHeight2 = this.ClientSize.Height - 220;
-            rtbPreview.Size = new System.Drawing.Size(newWidth2, newHeight2);
+            wvPreview.Size = new System.Drawing.Size(newWidth2, newHeight2);
         }
 
         private void AddEditContentForm_Load(object sender, EventArgs e)
@@ -96,9 +110,14 @@ namespace WinFormsCMS.forms
 
         private void rtbBody_TextChanged(object sender, EventArgs e)
         {
+            RefreshPreview();
+        }
+
+        private void RefreshPreview()
+        {
             var markdown = rtbBody.Text;
-            var html = Markdown.ToHtml(markdown);
-            rtbPreview.Text = html;
+            var html = MarkdownToHtml(markdown);
+            wvPreview.NavigateToString(html);
         }
 
         private void tbTitle_Leave(object sender, EventArgs e)
@@ -109,6 +128,22 @@ namespace WinFormsCMS.forms
             }
         }
 
+        private static string MarkdownToHtml(string markdown)
+        {
+            string htmlString = Markdown.ToHtml(markdown);
+
+            string youtubePattern = @"(https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+))";
+
+            string result = Regex.Replace(htmlString, youtubePattern, m =>
+            {
+                string url = m.Groups[1].Value;
+                string videoId = m.Groups[2].Value;
+                string iframe = $"<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/{videoId}\" frameborder=\"0\" allowfullscreen style=\"display:block; margin:auto;\"></iframe>";
+                return iframe;
+            });
+            return result;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             List<string> selectedCategories = lbCategories.SelectedItems.Cast<string>().ToList();
@@ -116,7 +151,7 @@ namespace WinFormsCMS.forms
             content.Title = tbTitle.Text;
             content.Permalink = tbPermalink.Text;
             content.Body = rtbBody.Text;
-            content.Rendered = Markdown.ToHtml(rtbBody.Text);
+            content.Rendered = MarkdownToHtml(rtbBody.Text);
             content.ContentType = contentType;
             content.Status = (ContentStatus)cbStatus.SelectedItem;
 
