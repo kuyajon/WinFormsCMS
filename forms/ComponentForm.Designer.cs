@@ -33,6 +33,7 @@
             btnAdd = new Button();
             rtbContent = new RichTextBox();
             btnDelete = new Button();
+            btnSave = new Button();
             ((System.ComponentModel.ISupportInitialize)dgComponents).BeginInit();
             SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             dgComponents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgComponents.Size = new Size(1261, 324);
             dgComponents.TabIndex = 1;
+            dgComponents.SelectionChanged += dgComponents_SelectionChanged;
             // 
             // tbName
             // 
@@ -83,11 +85,22 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(1975, 345);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(112, 34);
+            btnSave.TabIndex = 19;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
             // ComponentForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2132, 1318);
+            Controls.Add(btnSave);
             Controls.Add(btnDelete);
             Controls.Add(rtbContent);
             Controls.Add(btnAdd);
@@ -107,5 +120,6 @@
         private Button btnAdd;
         private RichTextBox rtbContent;
         private Button btnDelete;
+        private Button btnSave;
     }
 }

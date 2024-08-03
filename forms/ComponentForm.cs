@@ -66,7 +66,7 @@ namespace WinFormsCMS.forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgComponents.SelectedRows.Count>0)
+            if (dgComponents.SelectedRows.Count > 0)
             {
                 String key = dgComponents.SelectedRows[0].Cells[0].Value.ToString();
                 Component co = componentRepository.GetComponentByComponentKey(key);
@@ -76,6 +76,33 @@ namespace WinFormsCMS.forms
                 {
                     componentRepository.Delete(co);
                     RefreshGrid();
+                }
+            }
+        }
+
+        private void dgComponents_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgComponents.SelectedRows.Count > 0)
+            {
+                String key = dgComponents.SelectedRows[0].Cells[0].Value.ToString();
+                Component co = componentRepository.GetComponentByComponentKey(key);
+                if (co != null)
+                {
+                    rtbContent.Text = co.ComponentBody;
+                }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (dgComponents.SelectedRows.Count > 0)
+            {
+                String key = dgComponents.SelectedRows[0].Cells[0].Value.ToString();
+                Component co = componentRepository.GetComponentByComponentKey(key);
+                if (co != null)
+                {
+                    co.ComponentBody = rtbContent.Text;
+                    componentRepository.Update(co);
                 }
             }
         }
