@@ -41,6 +41,12 @@
             label5 = new Label();
             cbStatus = new ComboBox();
             lbCategories = new ListBox();
+            tbCreateDate = new TextBox();
+            label6 = new Label();
+            tbUpdateDate = new TextBox();
+            label7 = new Label();
+            tbPublishDate = new TextBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -175,11 +181,74 @@
             lbCategories.Size = new Size(440, 1004);
             lbCategories.TabIndex = 12;
             // 
+            // tbCreateDate
+            // 
+            tbCreateDate.Enabled = false;
+            tbCreateDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbCreateDate.Location = new Point(1678, 12);
+            tbCreateDate.Name = "tbCreateDate";
+            tbCreateDate.Size = new Size(366, 45);
+            tbCreateDate.TabIndex = 14;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(1500, 19);
+            label6.Name = "label6";
+            label6.Size = new Size(163, 38);
+            label6.TabIndex = 13;
+            label6.Text = "Create Date";
+            // 
+            // tbUpdateDate
+            // 
+            tbUpdateDate.Enabled = false;
+            tbUpdateDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbUpdateDate.Location = new Point(1678, 63);
+            tbUpdateDate.Name = "tbUpdateDate";
+            tbUpdateDate.Size = new Size(366, 45);
+            tbUpdateDate.TabIndex = 16;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(1500, 70);
+            label7.Name = "label7";
+            label7.Size = new Size(172, 38);
+            label7.TabIndex = 15;
+            label7.Text = "Update Date";
+            // 
+            // tbPublishDate
+            // 
+            tbPublishDate.Enabled = false;
+            tbPublishDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbPublishDate.Location = new Point(1678, 114);
+            tbPublishDate.Name = "tbPublishDate";
+            tbPublishDate.Size = new Size(366, 45);
+            tbPublishDate.TabIndex = 18;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(1500, 121);
+            label8.Name = "label8";
+            label8.Size = new Size(165, 38);
+            label8.TabIndex = 17;
+            label8.Text = "PublishDate";
+            // 
             // AddEditContentForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2839, 1303);
+            Controls.Add(tbPublishDate);
+            Controls.Add(label8);
+            Controls.Add(tbUpdateDate);
+            Controls.Add(label7);
+            Controls.Add(tbCreateDate);
+            Controls.Add(label6);
             Controls.Add(lbCategories);
             Controls.Add(cbStatus);
             Controls.Add(label5);
@@ -217,5 +286,11 @@
         private Label label5;
         private ComboBox cbStatus;
         private ListBox lbCategories;
+        private TextBox tbCreateDate;
+        private Label label6;
+        private TextBox tbUpdateDate;
+        private Label label7;
+        private TextBox tbPublishDate;
+        private Label label8;
     }
 }

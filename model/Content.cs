@@ -19,6 +19,8 @@ namespace WinFormsCMS
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
+        public DateTime? PublishDate { get; set; }
+
         [Write(false)]
         public string LocalParentPath => GetParentPath();
         [Write(false)]

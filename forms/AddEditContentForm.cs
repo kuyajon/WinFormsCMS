@@ -43,6 +43,12 @@ namespace WinFormsCMS.forms
                         lbCategories.SetSelected(index, true);
                     }
                 }
+                tbCreateDate.Text = content.CreatedDate.ToString();
+                tbUpdateDate.Text = content.UpdatedDate.ToString();
+                if (content.PublishDate != null)
+                {
+                    tbPublishDate.Text = content.PublishDate.ToString();
+                }
             }
         }
         public AddEditContentForm(ContentListForm parent, ContentType contentType) : this(parent, contentType, null)

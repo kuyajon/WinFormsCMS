@@ -26,9 +26,22 @@ namespace WinFormsCMS
         }
         public Content Insert(Content entity, List<string> selectedCategories)
         {
+            UpdatePublishDate(entity);
             Content result = base.Insert(entity);
             InsertCategories(entity, selectedCategories);
             return result;
+        }
+
+        private void UpdatePublishDate(Content entity)
+        {
+            if (entity.Status == ContentStatus.Published && entity.PublishDate == null)
+            {
+                entity.PublishDate = DateTime.Now;
+            }
+            if (entity.Status != ContentStatus.Published)
+            {
+                entity.PublishDate = null;
+            }
         }
 
         private void InsertCategories(Content entity, List<string> selectedCategories)
@@ -52,6 +65,7 @@ namespace WinFormsCMS
 
         public void Update(Content entity, List<string> selectedCategories)
         {
+            UpdatePublishDate(entity);
             base.Update(entity);
             InsertCategories(entity, selectedCategories);
         }
